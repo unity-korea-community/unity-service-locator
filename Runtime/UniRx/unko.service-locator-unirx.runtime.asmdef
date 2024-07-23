@@ -1,0 +1,17 @@
+{
+    "name": "unko.service-locator-unirx.runtime",
+    "rootNamespace": "",
+    "references": [
+        "UniRx",
+        "unko.service-locator.runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
