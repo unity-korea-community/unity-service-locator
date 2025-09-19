@@ -1,24 +1,44 @@
-﻿using System.Collections.Generic;
+﻿using UnityEngine;
 
 namespace UNKO.ServiceLocator
 {
     public class ServiceLocatorGlobal : ServiceLocatorObjectBase
     {
-        List<ServiceLocatorBehaviourBase> _onAwakeBehaviours = new List<ServiceLocatorBehaviourBase>();
+        public event System.Action OnApplicationQuitting;
 
-        protected override void Awake()
+        bool _applicationQuitting = false;
+
+        protected override void OnAwake()
         {
-            base.Awake();
+            base.OnAwake();
 
+            if (_applicationQuitting)
+            {
+                return;
+            }
             ServiceLocator.ConfigureGlobal(this);
-            DontDestroyOnLoad(gameObject);
+
+            if (Application.isPlaying)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+
+            Application.quitting += _logic.SetApplicationIsQuitting;
+        }
+
+        private void OnApplicationQuit()
+        {
+            _applicationQuitting = true;
+            OnApplicationQuitting?.Invoke();
         }
 
         protected override void OnDestroy()
         {
+            if (_applicationQuitting == false)
+            {
+                ServiceLocator.UnconfigureGlobal(this);
+            }
             base.OnDestroy();
-
-            ServiceLocator.UnconfigureGlobal(this);
         }
     }
 }

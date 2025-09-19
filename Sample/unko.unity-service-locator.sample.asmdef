@@ -1,7 +1,9 @@
 {
-    "name": "unko.service-locator.runtime",
-    "rootNamespace": "UNKO.ServiceLocator",
-    "references": [],
+    "name": "unko.unity-service-locator.sample",
+    "rootNamespace": "",
+    "references": [
+        "unko.service-locator.runtime"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

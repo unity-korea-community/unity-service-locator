@@ -1,11 +1,16 @@
 {
     "name": "unko.service-locator.runtime.tests",
-    "rootNamespace": "",
+    "rootNamespace": "UNKO.ServiceLocator",
     "references": [
-        "unko.service-locator.runtime"
+        "unko.service-locator.runtime",
+        "UnityEngine.TestRunner",
+        "UnityEditor.TestRunner"
     ],
     "includePlatforms": [
-        "Editor"
+        "Android",
+        "Editor",
+        "iOS",
+        "WebGL"
     ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
@@ -13,8 +18,10 @@
     "precompiledReferences": [
         "nunit.framework.dll"
     ],
-    "autoReferenced": true,
-    "defineConstraints": [],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
     "versionDefines": [],
     "noEngineReferences": false
 }
